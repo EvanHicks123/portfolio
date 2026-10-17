@@ -6,12 +6,12 @@ import { Github, Linkedin, Mail, FileText, ExternalLink, Play, Star } from 'luci
 /* ------------------------------------------------------------------ */
 
 const PROFILE = {
-    name: 'Evan Hicks', // <- change me
+    name: 'Evan Hicks',
     role: 'Computer Science Student and Full-Stack Developer',
     status: 'Open to co-op opportunities',
     tagline: 'I build full-stack and ML projects, like a hold-detection model that learns from user corrections and a deployed SMS bot with scheduled reminders and Stripe billing.',
     github: 'https://github.com/EvanHicks123',
-    linkedin: 'www.linkedin.com/in/evan-hicks123',
+    linkedin: 'https://www.linkedin.com/in/evan-hicks123',
     email: 'evanhicksman@gmail.com',
     resume: '', // e.g. '/resume.pdf' (file goes in your public folder)
     photo: '/headshot.JPG', // e.g. '/me.jpg' (file goes in your public folder). Empty shows your initials.
@@ -242,7 +242,7 @@ function Portfolio() {
                     <div className="featured-list">
                         {featured.map((p) => (
                             <Reveal key={p.id}>
-                                <div className="feature-row">
+                                <div id={p.id} className="feature-row">
                                     <ProjectCard project={p} />
                                     <DemoVideo project={p} />
                                 </div>
@@ -275,7 +275,8 @@ function Portfolio() {
                                     so far span computer vision, mobile apps, and backend services, and I want to work on
                                     real systems alongside a team that can teach me more.
                                 </p>
-                                <p>Outside of coding, I play soccer, drums, and guitar.</p>                            </div>
+                                <p>Outside of coding, I play soccer, drums, and guitar.</p>
+                            </div>
                         </div>
                     </Reveal>
                     <Reveal>
@@ -336,7 +337,7 @@ html { scroll-behavior: smooth; }
 .pf *, .pf *::before, .pf *::after { box-sizing: border-box; }
 .pf a { color: inherit; text-decoration: none; }
 .pf a:focus-visible { outline: 2px solid var(--cyan) !important; outline-offset: 3px; border-radius: 6px; }
-.pf section, .pf footer { scroll-margin-top: 5rem; }
+.pf section, .pf footer, .pf .feature-row { scroll-margin-top: 5rem; }
 
 /* scroll reveal */
 .pf .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
