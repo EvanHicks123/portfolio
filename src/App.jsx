@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Github, Linkedin, Mail, FileText, ExternalLink, Play, Star } from 'lucide-react';
 
 /* ------------------------------------------------------------------ */
@@ -171,6 +172,19 @@ function Portfolio() {
     const more = projects.filter((p) => !p.featured);
     const year = new Date().getFullYear();
     const initials = PROFILE.name.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+
+    useEffect(() => {
+        const hash = window.location.hash;
+        if (hash) {
+            const timer = setTimeout(() => {
+                const element = document.querySelector(hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 150);
+            return () => clearTimeout(timer);
+        }
+    }, []);
 
     return (
         <div className="pf">
