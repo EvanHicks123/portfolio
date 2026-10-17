@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
 import { Github, Linkedin, Mail, FileText, ExternalLink, Play, Star } from 'lucide-react';
 
-/* ------------------------------------------------------------------ */
-/*  EDIT THIS SECTION                                                  */
-/* ------------------------------------------------------------------ */
 
 const PROFILE = {
     name: 'Evan Hicks',
@@ -13,19 +10,11 @@ const PROFILE = {
     github: 'https://github.com/EvanHicks123',
     linkedin: 'https://www.linkedin.com/in/evan-hicks123',
     email: 'evanhicksman@gmail.com',
-    resume: '', // e.g. '/resume.pdf' (file goes in your public folder)
-    photo: '/headshot.JPG', // e.g. '/me.jpg' (file goes in your public folder). Empty shows your initials.
+    resume: 'Evan Hicks Csc Resume Oct 2026.pdf',
+    photo: '/headshot.JPG',
 };
 
-// Rename FightHub here once.
-const FIGHT_APP_NAME = 'Beef';
 
-/*
-  Demo videos: paste either
-    embedUrl: 'https://www.youtube.com/embed/VIDEO_ID'
-    videoUrl: '/demos/climbing.mp4'  (file in /public)
-  Leave both empty to show a "coming soon" placeholder.
-*/
 const projects = [
     {
         id: 'climbing',
@@ -66,7 +55,7 @@ const projects = [
     {
         id: 'fight',
         featured: false,
-        title: FIGHT_APP_NAME,
+        title: 'Beef',
         subtitle: 'Settle friend-group disputes by vote',
         description:
             "Challenge a friend over anything, and the group votes on whether it is worth it. Accepted challenges open up predictions, with odds built from each side's height, weight, and record.",
