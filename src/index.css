@@ -1,26 +1,25 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0a0e27;
 }
 
 #root {
-  width: 100%;
-  min-height: 100vh;
+    width: 100%;
+    min-height: 100vh;
 }
 
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-*:focus,
-*:focus-visible,
-*:active {
-  outline: none !important;
-  box-shadow: none;
-}
-
-a, div, button {
-  -webkit-user-select: none;
+/* Remove default outlines ONLY on mouse click, while keeping accessible focus rings for keyboard Tab */
+*:focus:not(:focus-visible) {
+    outline: none;
 }

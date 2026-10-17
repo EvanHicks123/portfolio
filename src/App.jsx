@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import { Github, Linkedin, Mail, FileText, ExternalLink, Play, Star } from 'lucide-react';
 
 /* ------------------------------------------------------------------ */
@@ -114,26 +113,6 @@ const skillGroups = [
 /*  Components                                                         */
 /* ------------------------------------------------------------------ */
 
-// Fades content in the first time it scrolls into view.
-function Reveal({ children, delay = 0, className = '' }) {
-    const ref = useRef(null);
-    const [shown, setShown] = useState(false);
-    useEffect(() => {
-        const el = ref.current;
-        if (!el || typeof IntersectionObserver === 'undefined') { setShown(true); return; }
-        const io = new IntersectionObserver(([e]) => {
-            if (e.isIntersecting) { setShown(true); io.disconnect(); }
-        }, { threshold: 0.12 });
-        io.observe(el);
-        return () => io.disconnect();
-    }, []);
-    return (
-        <div ref={ref} className={`reveal ${shown ? 'in' : ''} ${className}`} style={{ transitionDelay: `${delay}ms` }}>
-            {children}
-        </div>
-    );
-}
-
 function DemoVideo({ project }) {
     const { title, embedUrl, videoUrl } = project;
     return (
@@ -235,80 +214,72 @@ function Portfolio() {
                 </header>
 
                 <section id="projects">
-                    <Reveal>
-                        <h2 className="section-title">Featured projects</h2>
-                        <p className="section-note">Start with the demo videos. Code and details are one click away.</p>
-                    </Reveal>
+                    <h2 className="section-title">Featured projects</h2>
+                    <p className="section-note">Start with the demo videos. Code and details are one click away.</p>
+
                     <div className="featured-list">
                         {featured.map((p) => (
-                            <Reveal key={p.id}>
-                                <div id={p.id} className="feature-row">
-                                    <ProjectCard project={p} />
-                                    <DemoVideo project={p} />
-                                </div>
-                            </Reveal>
+                            <div id={p.id} key={p.id} className="feature-row">
+                                <ProjectCard project={p} />
+                                <DemoVideo project={p} />
+                            </div>
                         ))}
                     </div>
 
-                    <Reveal><h2 className="section-title title-secondary">More projects</h2></Reveal>
+                    <h2 className="section-title title-secondary">More projects</h2>
                     <div className="more-grid">
-                        {more.map((p, i) => (
-                            <Reveal key={p.id} className="fill" delay={i * 90}>
+                        {more.map((p) => (
+                            <div key={p.id} className="fill">
                                 <ProjectCard project={p} />
-                            </Reveal>
+                            </div>
                         ))}
                     </div>
                 </section>
 
                 <section id="about" className="about">
-                    <Reveal><h2 className="section-title">About me</h2></Reveal>
-                    <Reveal>
-                        <div className="about-row">
-                            {PROFILE.photo ? (
-                                <img className="photo" src={PROFILE.photo} alt={`Portrait of ${PROFILE.name}`} />
-                            ) : (
-                                <div className="photo photo-fallback" aria-hidden="true">{initials}</div>
-                            )}
-                            <div className="about-text">
-                                <p>
-                                    I'm a computer science student at UVIC, looking for a four or eight month co-op. My projects
-                                    so far span computer vision, mobile apps, and backend services, and I want to work on
-                                    real systems alongside a team that can teach me more.
-                                </p>
-                                <p>Outside of coding, I play soccer, drums, and guitar.</p>
-                            </div>
+                    <h2 className="section-title">About me</h2>
+                    <div className="about-row">
+                        {PROFILE.photo ? (
+                            <img className="photo" src={PROFILE.photo} alt={`Portrait of ${PROFILE.name}`} />
+                        ) : (
+                            <div className="photo photo-fallback" aria-hidden="true">{initials}</div>
+                        )}
+                        <div className="about-text">
+                            <p>
+                                I'm a computer science student at UVIC, looking for a four or eight month co-op. My projects
+                                so far span computer vision, mobile apps, and backend services, and I want to work on
+                                real systems alongside a team that can teach me more.
+                            </p>
+                            <p>Outside of coding, I play soccer, drums, and guitar.</p>
                         </div>
-                    </Reveal>
-                    <Reveal>
-                        <div className="skills-box">
-                            <h3>Skills</h3>
-                            <div className="skills-grid">
-                                {skillGroups.map((g) => (
-                                    <div className="skill-group" key={g.label}>
-                                        <span className="skill-label">{g.label}</span>
-                                        <div className="tag-row">
-                                            {g.items.map((s) => <span className="skill-tag" key={s}>{s}</span>)}
-                                        </div>
+                    </div>
+
+                    <div className="skills-box">
+                        <h3>Skills</h3>
+                        <div className="skills-grid">
+                            {skillGroups.map((g) => (
+                                <div className="skill-group" key={g.label}>
+                                    <span className="skill-label">{g.label}</span>
+                                    <div className="tag-row">
+                                        {g.items.map((s) => <span className="skill-tag" key={s}>{s}</span>)}
                                     </div>
-                                ))}
-                            </div>
+                                </div>
+                            ))}
                         </div>
-                    </Reveal>
+                    </div>
                 </section>
             </main>
 
             <footer id="contact" className="footer">
-                <Reveal>
-                    <h2>Contact Me</h2>
-                    <div className="footer-links">
-                        <a className="btn btn-primary" href={`mailto:${PROFILE.email}`}><Mail size={17} /> {PROFILE.email}</a>
-                        {PROFILE.linkedin && (
-                            <a className="btn" href={PROFILE.linkedin} target="_blank" rel="noreferrer"><Linkedin size={17} /> LinkedIn</a>
-                        )}
-                        <a className="btn" href={PROFILE.github} target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a>
-                    </div>
-                    <p className="copy">© {year} {PROFILE.name}</p>
-                </Reveal>
+                <h2>Contact Me</h2>
+                <div className="footer-links">
+                    <a className="btn btn-primary" href={`mailto:${PROFILE.email}`}><Mail size={17} /> {PROFILE.email}</a>
+                    {PROFILE.linkedin && (
+                        <a className="btn" href={PROFILE.linkedin} target="_blank" rel="noreferrer"><Linkedin size={17} /> LinkedIn</a>
+                    )}
+                    <a className="btn" href={PROFILE.github} target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a>
+                </div>
+                <p className="copy">© {year} {PROFILE.name}</p>
             </footer>
         </div>
     );
@@ -339,9 +310,6 @@ html { scroll-behavior: smooth; }
 .pf a:focus-visible { outline: 2px solid var(--cyan) !important; outline-offset: 3px; border-radius: 6px; }
 .pf section, .pf footer, .pf .feature-row { scroll-margin-top: 5rem; }
 
-/* scroll reveal */
-.pf .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.pf .reveal.in { opacity: 1; transform: none; }
 .pf .fill { height: 100%; }
 
 /* nav */
@@ -448,10 +416,6 @@ html { scroll-behavior: smooth; }
   .pf .card { padding: 1.4rem; }
   .pf .card-featured { padding-top: 3.1rem; }
   .pf .skills-grid { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .pf *, html { transition: none !important; scroll-behavior: auto; }
-  .pf .reveal { opacity: 1; transform: none; }
 }
 `;
 
