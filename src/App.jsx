@@ -249,7 +249,7 @@ function Portfolio() {
                         )}
                         <div className="about-text">
                             <p>
-                                I'm a computer science student at UVIC, looking for a four or eight month co-op. My projects
+                                I'm a computer science student at UVIC, looking for a four or eight month co-op starting in Summer or Fall 2027. My projects
                                 so far span computer vision, mobile apps, and backend services, and I want to work on
                                 real systems alongside a team that can teach me more.
                             </p>
