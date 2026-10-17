@@ -14,7 +14,7 @@ const PROFILE = {
     linkedin: 'www.linkedin.com/in/evan-hicks123',
     email: 'evanhicksman@gmail.com',
     resume: '', // e.g. '/resume.pdf' (file goes in your public folder)
-    photo: '', // e.g. '/me.jpg' (file goes in your public folder). Empty shows your initials.
+    photo: '/headshot.JPG', // e.g. '/me.jpg' (file goes in your public folder). Empty shows your initials.
 };
 
 // Rename FightHub here once.
@@ -37,13 +37,13 @@ const projects = [
         highlights: [
             'YOLOv8 model fine-tuned from a Roboflow dataset to classify hold types',
             'Users correct detections on their own photos, and the model keeps learning from those corrections',
-            'Custom spatial vector algorithm turns a selected hold sequence into a V-grade',
+            'Hand-tuned scoring algorithm weights each move by hold type and reach distance to estimate a V-grade',
         ],
         tech: ['React Native', 'Expo', 'Flask', 'Python', 'YOLOv8'],
         github: 'https://github.com/EvanHicks123/ClimbingApp',
         live: '',
-        embedUrl: 'https://www.youtube.com/embed/8S94xCsspQM?rel=0',
-        videoUrl: '',
+        embedUrl: '',
+        videoUrl: '/demos/HoldVision.mp4',
     },
     {
         id: 'bouncer',
@@ -61,7 +61,7 @@ const projects = [
         github: 'https://github.com/EvanHicks123/bouncer',
         live: '',
         embedUrl: '',
-        videoUrl: '',
+        videoUrl: '/demos/bouncer.mp4',
     },
     {
         id: 'fight',
@@ -95,7 +95,7 @@ const projects = [
         ],
         tech: ['React', 'Python', 'PostgreSQL', 'Grok API'],
         github: 'https://github.com/EvanHicks123/QuizGen',
-        live: '',
+        live: 'https://quizgen-cato.onrender.com',
         embedUrl: '',
         videoUrl: '',
     },
@@ -396,7 +396,17 @@ html { scroll-behavior: smooth; }
 .pf .project-links a:hover { color: var(--cyan); }
 
 /* video */
-.pf .video-frame { width: 100%; aspect-ratio: 16 / 9; border-radius: 1rem; overflow: hidden; background: #0d1230; border: 1px solid var(--line); box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8); }
+.pf .video-frame {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 9 / 16;
+  justify-self: center;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+}
 .pf .video-frame iframe, .pf .video-frame video { width: 100%; height: 100%; border: 0; display: block; background: #000; }
 .pf .video-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; color: var(--muted); font-size: 0.95rem; text-align: center; padding: 1rem; background: radial-gradient(400px 220px at 50% 45%, rgba(59, 130, 246, 0.14), transparent 70%), #0d1230; }
 .pf .play-dot { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(96, 165, 250, 0.55); color: var(--blue); }
