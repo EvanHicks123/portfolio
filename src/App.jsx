@@ -218,8 +218,6 @@ function Portfolio() {
 
                 <section id="projects">
                     <h2 className="section-title">Featured projects</h2>
-                    <p className="section-note">Start with the demo videos. Code and details are one click away.</p>
-
                     <div className="featured-list">
                         {featured.map((p) => (
                             <div id={p.id} key={p.id} className="feature-row">
@@ -300,8 +298,8 @@ html { scroll-behavior: smooth; }
   --text: #e8edf6; --soft: #c3cde0; --muted: #8b99b3; --blue: #60a5fa; --cyan: #22d3ee;
   min-height: 100vh;
   background:
-    radial-gradient(900px 480px at 15% -5%, rgba(59, 130, 246, 0.16), transparent 60%),
-    linear-gradient(160deg, #0a0e27 0%, #121833 55%, #0b0f26 100%);
+    solid(900px 480px at 15% -5%, rgba(59, 130, 246, 0.16), transparent 60%),
+    solid(160deg, #0a0e27 0%, #121833 55%, #0b0f26 100%);
   background-attachment: fixed;
   color: var(--text);
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
