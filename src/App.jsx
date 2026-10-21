@@ -19,7 +19,7 @@ const projects = [
     {
         id: 'climbing',
         featured: true,
-        title: 'HoldVision'
+        title: 'HoldVision',
         subtitle: 'Computer vision route grader',
         description:
             'Take a photo of a climbing wall and the app detects every hold, classifies its type, and estimates the route difficulty from the holds you select.',
@@ -46,7 +46,7 @@ const projects = [
             'Tasks and commitments stored in Supabase, with reminders triggered by cron jobs and hosted around the clock on Render',
             'Stripe integration for monthly subscriptions',
         ],
-        tech: ['Twilio', 'Supabase', 'Render', 'Cron', 'Stripe'],
+        tech: ['JavaScript', 'Twilio', 'Supabase', 'Render', 'Cron', 'Stripe'],
         github: 'https://github.com/EvanHicks123/bouncer',
         live: '',
         embedUrl: '',
