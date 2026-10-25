@@ -9,7 +9,7 @@ const PROFILE = {
     tagline: 'I build full-stack and ML projects, like a hold-detection model that learns from user corrections and a deployed SMS bot with scheduled reminders and Stripe billing.',
     github: 'https://github.com/EvanHicks123',
     linkedin: 'https://www.linkedin.com/in/evan-hicks123',
-    email: 'evanhicksman@gmail.com',
+    email: 'evanhicks.dev@gmail.com',
     resume: 'Evan Hicks Csc Resume Oct 2026.pdf',
     photo: '/headshot.JPG',
 };
